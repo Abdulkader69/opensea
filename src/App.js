@@ -4,18 +4,23 @@ import React, {useState} from 'react';
 import FilterIcon from "./components/SVGIcon/FilterIcon";
 import LeftArrowIcon from "./components/SVGIcon/LeftArrowIcon";
 import Sidebar from "./components/SideBar";
+import TopFilter from "./components/TopFilter";
+import { NFTs } from "./components/api/dummy";
+import Header from "./components/Header";
 
 const App = () => {
-  const [isShowing, setIsShowing] = useState(true)
+  const [isShowing, setIsShowing] = useState(true);
+
+  const [activeView, setActiveView] = useState('grid');
+  const handleActiveView = (view) => {
+    setActiveView(view);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <p className="text-3xl">
-          Header
-        </p>
-      </header>
-      <div className="assets-page-wrapper flex">
-        <div className="side-bar sticky top-[36px] self-start h-[calc(100vh-36px)] overflow-hidden border-r border-solid border-Grey/20">
+      <Header />
+      <div className="assets-page-wrapper flex pt-[72px]">
+        <div className="side-bar sticky top-[72px] self-start h-[calc(100vh-72px)] overflow-hidden border-r border-solid border-Grey/20">
           <button className={`flex items-center justify-between w-full p-4 border-b border-solid border-Grey/20 transition ease-in hover:shadow-md ${isShowing ? 'a' : 'b'}`} onClick={() => setIsShowing((isShowing) => !isShowing)}>
             <p className={`flex items-center text-base font-semibold text-Dark ${isShowing ? '' : 'hidden'}`}>
               <FilterIcon />
@@ -39,24 +44,14 @@ const App = () => {
           </Transition>
         </div>
         <div className="main-area flex-1 px-7">
-          <div className="grid gap-4 grid-cols-6">
-            <NFTItem />
-            <NFTItem />
-            <NFTItem />
-            <NFTItem />
-            <NFTItem />
-            <NFTItem />
-            <NFTItem />
-            <NFTItem />
-            <NFTItem />
-            <NFTItem />
-            <NFTItem />
-            <NFTItem />
-            <NFTItem />
-            <NFTItem />
-            <NFTItem />
-            <NFTItem />
-            <NFTItem />
+          <div className="top-filter flex items-center justify-between py-10">
+            <div className="total-count text-base text-Dark">30,004,567 items</div>
+            <TopFilter handleActiveView={handleActiveView} activeView={activeView} />
+          </div>
+          <div className={`grid gap-4 ${activeView==='list' ? 'grid-cols-6' : 'grid-cols-5'}`}>
+            {NFTs.map((item) => (
+              <NFTItem detail={item} key={item.id} />
+            ))}
           </div>
         </div>
       </div>
