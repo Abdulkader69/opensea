@@ -20,7 +20,7 @@ const App = () => {
     <div className="App">
       <Header />
       <div className="assets-page-wrapper flex pt-[72px]">
-        <div className="side-bar sticky top-[72px] self-start h-[calc(100vh-72px)] overflow-hidden border-r border-solid border-Grey/20">
+        <div className="side-bar hidden lg:block sticky top-[72px] self-start h-[calc(100vh-72px)] overflow-hidden border-r border-solid border-Grey/20">
           <button className={`flex items-center justify-between w-full p-4 border-b border-solid border-Grey/20 transition ease-in hover:shadow-md ${isShowing ? 'a' : 'b'}`} onClick={() => setIsShowing((isShowing) => !isShowing)}>
             <p className={`flex items-center text-base font-semibold text-Dark ${isShowing ? '' : 'hidden'}`}>
               <FilterIcon />
@@ -43,12 +43,12 @@ const App = () => {
             <Sidebar />
           </Transition>
         </div>
-        <div className="main-area flex-1 px-7">
-          <div className="top-filter flex items-center justify-between py-10">
-            <div className="total-count text-base text-Dark">30,004,567 items</div>
+        <div className="main-area flex-1 px-4 lg:px-7">
+          <div className="top-filter flex items-center justify-between py-4 lg:py-8 xl:py-10">
+            <div className="total-count text-base text-Dark hidden md:block">30,004,567 items</div>
             <TopFilter handleActiveView={handleActiveView} activeView={activeView} />
           </div>
-          <div className={`grid gap-4 ${activeView==='list' ? 'grid-cols-6' : 'grid-cols-5'}`}>
+          <div className={`grid gap-4 ${isShowing ? '' : 'sidebar-hidden'} ${activeView==='list' ? 'grid-cols-6 list-view' : 'grid-cols-5 grid-view'}`}>
             {NFTs.map((item) => (
               <NFTItem detail={item} key={item.id} />
             ))}

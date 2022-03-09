@@ -1,13 +1,14 @@
 import React from 'react';
+import LoveIcon from './SVGIcon/LoveIcon';
 
 const NFTItem = ( {detail} ) => {
     return (
-        <div className='nft-item'>
+        <div className='nft-item mb-2 overflow-hidden border border-solid border-Grey/40 rounded-lg group transition ease-in hover:shadow-NFT hover:scale-[1.02]'>
             <a href={detail.link}>
                 <div className="thumb relative pb-[100%] flex overflow-hidden">
                     <img className='w-full object-cover absolute top-0 left-0' src={detail.image} alt="name" />
                 </div>
-                <div className="details flex justify-between">
+                <div className="details flex justify-between py-4 px-3 shadow-sm">
                     <div className="left w-3/5 pr-4">
                         <div className="author max-w-[80%] flex">
                             <p className='text-xs text-Grey leading-[1] overflow-hidden whitespace-nowrap text-ellipsis'>{detail.author}</p>
@@ -38,6 +39,13 @@ const NFTItem = ( {detail} ) => {
                             </div>
                             {detail.time} left
                         </div>
+                    </div>
+                </div>
+                <div className="bottom-area p-3 flex items-center justify-between">
+                    <a className='font-semibold text-sm text-Blue transition ease-in invisible opacity-0 group-hover:opacity-100 group-hover:visible' href={detail.link}>Buy Now</a>
+                    <div className="love flex items-center justify-end text-sm text-Grey">
+                        <LoveIcon />
+                        <span className='ml-1'>3</span>
                     </div>
                 </div>
             </a>

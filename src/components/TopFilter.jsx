@@ -9,10 +9,10 @@ const TopFilter = ({handleActiveView, activeView}) => {
     const [selectedAllItem, setSelectedAllItem] = useState(AllItems[0]);
     const [selectedShortBy, setSelectedShortBy] = useState(ShortBy[0]);
     return (
-        <div className="filter flex items-center justify-end">
-            <div className="all-item relative z-20 mr-2">
+        <div className="filter flex flex-wrap items-center justify-end w-full sm:w-auto">
+            <div className="all-item relative z-30 sm:mr-2 mb-2 sm:mb-0 w-full sm:w-[180px] 2xl:w-[227px]">
                 <Listbox value={selectedAllItem} onChange={setSelectedAllItem}>
-                    <Listbox.Button className='relative h-[50px] w-[227px] text-left pl-2 bg-white rounded-lg border border-solid border-Grey/40'>
+                    <Listbox.Button className='relative h-[45px] 2xl:h-[50px] w-full text-sm xl:text-base text-left pl-2 bg-white rounded-lg border border-solid border-Grey/40'>
                         {selectedAllItem.name}
                         <span className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
                             <AngleDownIcon classes={'w-4 h-4'} />
@@ -38,9 +38,9 @@ const TopFilter = ({handleActiveView, activeView}) => {
                     </Transition>
                 </Listbox>
             </div>
-            <div className="shortby relative z-20 mr-2">
+            <div className="shortby relative z-20 mr-2 w-[calc(100%-100px)] sm:w-[180px] 2xl:w-[227px]">
                 <Listbox value={selectedShortBy} onChange={setSelectedShortBy}>
-                    <Listbox.Button className='relative h-[50px] w-[227px] text-left pl-2 bg-white rounded-lg border border-solid border-Grey/40'>
+                    <Listbox.Button className='relative h-[45px] 2xl:h-[50px] w-full text-sm xl:text-base text-left pl-2 bg-white rounded-lg border border-solid border-Grey/40'>
                         {selectedShortBy.name}
                         <span className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
                             <AngleDownIcon classes={'w-4 h-4'} />
@@ -66,9 +66,9 @@ const TopFilter = ({handleActiveView, activeView}) => {
                     </Transition>
                 </Listbox>
             </div>
-            <div className={`view relative z-20 flex `}>
-                <button onClick={() => {handleActiveView('grid')}} disabled={activeView==='grid' ? true : false} className={`grid-view w-[50px] h-[50px] cursor-pointer flex items-center justify-center border border-solid border-Grey/40 rounded-l-lg ${activeView==='grid' ? 'bg-[rgb(243,251,254)] cursor-auto' : ''}`}><GridViewIcon /></button>
-                <button onClick={() => {handleActiveView('list')}} disabled={activeView==='list' ? true : false} className={`app-view w-[50px] h-[50px] cursor-pointer flex items-center justify-center border border-l-0 border-solid border-Grey/40 rounded-r-lg ${activeView==='list' ? 'bg-[rgb(243,251,254)] cursor-auto' : ''}`}><AppViewIcon /></button>
+            <div className={`view relative z-20 flex w-[90px]`}>
+                <button onClick={() => {handleActiveView('grid')}} disabled={activeView==='grid' ? true : false} className={`grid-view w-[45px] 2xl:w-[50px] h-[45px] 2xl:h-[50px] cursor-pointer flex items-center justify-center border border-solid border-Grey/40 rounded-l-lg ${activeView==='grid' ? 'bg-[rgb(243,251,254)] cursor-auto' : ''}`}><GridViewIcon /></button>
+                <button onClick={() => {handleActiveView('list')}} disabled={activeView==='list' ? true : false} className={`app-view w-[45px] 2xl:w-[50px] h-[45px] 2xl:h-[50px] cursor-pointer flex items-center justify-center border border-l-0 border-solid border-Grey/40 rounded-r-lg ${activeView==='list' ? 'bg-[rgb(243,251,254)] cursor-auto' : ''}`}><AppViewIcon /></button>
             </div>
         </div>
     );
