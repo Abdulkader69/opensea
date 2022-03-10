@@ -47,20 +47,27 @@ body {
   .main-area .list-view {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+  .side-bar.show-mobile-filter {
+    transform: translateX(0px);
+  }
 }
 @media screen and (max-width:767px ) {
-  .main-area .grid-view {
+  .main-area .grid-view,
+  .main-area .sidebar-hidden.grid-view {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .main-area .list-view {
+  .main-area .list-view,
+  .main-area .sidebar-hidden.list-view {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 @media screen and (max-width:640px ) {
-  .main-area .grid-view {
+  .main-area .grid-view,
+  .main-area .sidebar-hidden.grid-view {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
-  .main-area .list-view {
+  .main-area .list-view,
+  .main-area .sidebar-hidden.list-view {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
